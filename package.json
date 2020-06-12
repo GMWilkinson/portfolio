@@ -1,7 +1,7 @@
 {
-  "name": "quiz-carousel",
+  "name": "portfolio",
   "version": "0.1.0",
-  "homepage": "https://GMWilkinson.github.io/portfolio-new",
+  "homepage": "http://GMWilkinson.github.io/portfolio",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
