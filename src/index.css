@@ -5,9 +5,81 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #666666;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.slide-container {
+  background: #999999;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.no-image {
+  font-size: 40px;
+  color: white;
+}
+
+.text-box {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.home-title {
+  font-size: 3rem;
+  /* margin-bottom: 10px; */
+}
+
+.center-text {
+  text-align: center;
+}
+
+.about-container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.about-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.about-text {
+  padding: 2rem;
+  font-size: 1.5em;
+}
+
+.project-container {
+  padding-bottom: 1rem;
+}
+
+.projects-box {
+  padding-bottom: 20px;
+}
+
+.projects-text {
+  color: #666666;
+}
+
+.company-name {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.section-text {
+  text-align: left;
+}
+
+.light-text {
+  color: white;
 }
