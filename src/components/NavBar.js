@@ -6,6 +6,7 @@ import {
   Nav,
   NavItem,
   NavLink,
+  NavbarBrand,
   Button,
   UncontrolledDropdown,
   DropdownToggle,
@@ -21,42 +22,35 @@ const NavBar = (props) => {
     <div>
       <Navbar
       color={props.colourMode === 'Light' ? 'dark' : 'light'}
-      light={props.colourMode.toLowerCase()}
+      light={true}
       expand="md"
       style={{
         position: 'fixed',
         top: 0,
         width: '100%',
         zIndex: 99,
-        boxShadow: '0 0 20px 0px rgba(0, 0, 0, 0.3)',
-        color: {}
+        boxShadow: '0 0 20px 0px rgba(0, 0, 0, 0.3)'
       }}>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="#about">About</NavLink>
+              <NavLink href="#about" onClick={() => props.changeComponent(1)}>About</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#tech">Technologies</NavLink>
+              <NavLink href="#tech" onClick={() => props.changeComponent(2)}>Skills</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#projects">Projects</NavLink>
+              <NavLink href="#projects" onClick={() => props.changeComponent(3)}>Projects</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#contact">Contact</NavLink>
+              <NavLink href="#current" onClick={() => props.changeComponent(4)}>Current Projects</NavLink>
             </NavItem>
-            {/*<UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem onClick={props.changeColourMode}>
-                  {props.colourMode} mode
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>*/}
+            <NavItem>
+              <NavLink href="#contact" onClick={() => props.changeComponent(5)}>Contact</NavLink>
+            </NavItem>
           </Nav>
+          <NavbarBrand>{props.section}</NavbarBrand>
         </Collapse>
       </Navbar>
     </div>

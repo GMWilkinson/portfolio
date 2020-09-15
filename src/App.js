@@ -1,10 +1,10 @@
 import React from 'react';
 import NavBar from './components/NavBar';
 import Projects from './components/Projects';
+import CurrentProjects from './components/CurrentProjects';
 import About from './components/About';
 import Tech from './components/Tech';
 import Contact from './components/Contact';
-import SectionHeader from './components/SectionHeader';
 import SM1 from './images/SM1.png';
 import SM2 from './images/SM2.png';
 import SM3 from './images/SM3.png';
@@ -155,8 +155,19 @@ const aimerProjects = [
 const otherProjects = [
   {
     name: 'Nodestats',
-    text: 'A React website that compares different Ethereum nodes.',
-    images: nodestatsImages
+    text: 'A React app that compares data from different Ethereum nodes and displays it in charts using the Google Charts API. I made this for TokenAnalyst.'
+  },
+  {
+    name: 'Escape room',
+    text: 'A game that imitates the puzzles in an escape room, it is on hold at the moment until I can figure out some puzzles that fit with the narrative. Made with ReactJS.'
+  },
+  {
+    name: 'Funnel Implementation Plan',
+    text: 'A simple web page that I made for the local Mutual Aid group, it converts Airtable data into a Gandtt style chart. Made with ReactJS.'
+  },
+  {
+    name: 'Funnel App',
+    text: 'A Mobile app that I am making for a local Mutual aid group. It shows the nearest food bank drop off points to your current location or from a postcode and displays neccesary data such as opening times and items that are needed. It can also be used to create your own drop off points. It is made with React Native, Node.js, MongoDB and the Google Maps API.'
   }
 ];
 
@@ -164,7 +175,10 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      colourMode: 'Light'
+      colourMode: 'Light',
+      currentComponent: <About />,
+      counter: 1,
+      section: 'About'
     }
   }
 
@@ -181,32 +195,64 @@ class App extends React.Component {
     }
   }
 
+  changeComponent(count) {
+    if (count === 1) {
+      this.setState({
+        currentComponent: <About />,
+        counter: count,
+        section: 'About'
+      })
+    }
+    if (count === 2) {
+      this.setState({
+        currentComponent: <Tech />,
+        counter: count,
+        section: 'Skills'
+      })
+    }
+    if (count === 3) {
+      this.setState({
+        currentComponent: <Projects projects={aimerProjects} company={"Projects at Aimer Media"}/>,
+        counter: count,
+        section: 'Projects'
+      })
+    }
+    if (count === 4) {
+      this.setState({
+        currentComponent: <CurrentProjects projects={otherProjects} company={"Current Projects"}/>,
+        counter: count,
+        section: 'Current Projects'
+      })
+    }
+    if (count === 5) {
+      this.setState({
+        currentComponent: <Contact />,
+        counter: count,
+        section: 'Contact'
+      })
+    }
+  }
+
   render() {
-    const { colourMode } = this.state;
+    const { colourMode, currentComponent, counter, section } = this.state;
     return (
       <main>
         <NavBar
           changeColourMode={() => this.changeColourMode()}
           colourMode={colourMode === 'Light' ? 'Dark' : 'Light'}
+          changeComponent={this.changeComponent.bind(this)}
+          section={section}
         />
-        <div style={{paddingTop: 20}}>
-          <article id="about" className="about-container">
-            <About />
-          </article>
-          <article id="tech" className="about-container">
-            <Tech />
-          </article>
-          <article id="projects" className="project-container">
-            <SectionHeader color="green" background="red" text="Projects"/>
-            <Projects projects={aimerProjects} company={"Aimer Media"}/>
-            <Projects projects={otherProjects} company={"Other"}/>
-          </article>
-          <article id="contact" className="about-container">
-            <Contact />
+        <div className="container">
+          <article>
+            {currentComponent}
           </article>
         </div>
+        {counter !== 1 && <div className="prev" onClick={() => this.changeComponent(counter -1)}>&#10094;</div>}
+        {counter !== 5 && <div className="next" onClick={() => this.changeComponent(counter +1)}>&#10095;</div>}
       </main>
     )
   }
 }
+
 export default App;

@@ -4,10 +4,12 @@ import SectionHeader from './SectionHeader';
 export default function Contact() {
   return (
     <section className="about-section">
-      <SectionHeader color="green" background="red" text="Contact"/>
       <div className="about-text">
         <p>Feel free to contact me at:</p>
-        <p>wilkinsonmgrant@gmail.com</p>
+        <p style={{fontSize: 20}}>wilkinsonmgrant@gmail.com</p>
+        <a href="https://www.linkedin.com/in/gmwilkinson/">
+          <i className="fa fa-linkedin-square" style={{fontSize: 48, color: 'blue'}}></i>
+        </a>
       </div>
     </section>
   )

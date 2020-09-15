@@ -3,11 +3,10 @@ import {
   Carousel,
   CarouselItem,
   CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
+  CarouselIndicators
 } from 'reactstrap';
 
-const Example = (props) => {
+const ImageCarousel = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -37,7 +36,7 @@ const Example = (props) => {
         ride={false}
       >
         <div className="slide-container">
-          <img style={{maxHeight: '70vh', minHeight: '70vh'}} src={item.src} alt={item.altText} />
+          <img style={{maxHeight: '50vh', minHeight: '50vh'}} src={item.src} alt={item.altText} />
         </div>
       </CarouselItem>
     );
@@ -57,4 +56,4 @@ const Example = (props) => {
   );
 }
 
-export default Example;
+export default ImageCarousel;
